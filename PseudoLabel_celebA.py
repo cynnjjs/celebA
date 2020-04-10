@@ -137,7 +137,11 @@ def finetune_Target_celebA(checkpoint_path, best_model_path, mixed, start_epochs
             optimizer.zero_grad()
             logits_T = model(T_images)
             loss_T = torch.mean(torch.sum(- F.log_softmax(logits_T, 1) * F.softmax(logits_T, 1), 1))
+
+            # Uncomment to add vat loss
             loss = loss_T #+ vat_loss(T_images, logits_T, model)
+
+            # Option to mix source labeled loss with target unlabeled loss
             if mixed:
                 S_images, S_labels, _ = next(iter(S_train_loader))
                 logits_S = model(S_images)
@@ -221,7 +225,7 @@ num_T_tot = num_tot - num_S_tot
 #num_S_tot = [int(x/10) for x in num_S_tot]
 #num_T_tot = [int(x/10) for x in num_T_tot]
 train_Source = False
-new_train = True
+new_train = False
 mixed = False # Bundle target and source in one batch
 n_epoch = 120
 checkpoint_get_path = './semiTest/checkpoints/checkpoint.pt'
