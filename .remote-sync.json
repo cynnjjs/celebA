@@ -1,0 +1,19 @@
+{
+  "logger": {
+    "title": "Remote Sync"
+  },
+  "uploadOnSave": true,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "sc.stanford.edu",
+  "port": "22",
+  "target": "../../tiger/u/cynnjjs/celebA/",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**"
+  ],
+  "username": "cynnjjs",
+  "password": "SuHh.059519",
+  "watch": [],
+  "transport": "scp"
+}
